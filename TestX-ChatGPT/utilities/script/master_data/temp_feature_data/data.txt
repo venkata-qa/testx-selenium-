@@ -1,0 +1,48 @@
+Please modify the following Gherkin scenario while ensuring that the sequence and meaning remain unchanged.
+     Combine steps that involve similar subsequent actions on the same page,
+     but keep distinct steps separate. Do not alter the order of the steps or the meaning of the scenario.
+
+This sample scenarios you can use for your reference.
+Scenario: 1.0 - Cart functionality on <random page name> page
+Given I hover on the following elements on <Home_Page>
+|Col_name1|
+| Man7   |
+| Tops7  |
+
+And I click the following elements on <Home_Page>
+|Col_name1|
+| Jackets_web_element1               |
+| Any_Searched_Result_Item_web_element2 |
+
+And I click on <Buy_Now> on <Search_Page>
+And I click the following elements on <Product_Detail_Page>
+|Col_name1|
+| M_Size_web_element3     |
+| Blue_Color_web_element4 |
+
+And I enter <2> in <Qty> field on <Product_Detail_Page>
+And I click on <Add_To_Cart> on <Product_Detail_Page>
+And I assert element <Cart> text with <2> on <Cart_Page>
+
+When I click the following elements on <Cart_Page>
+|Col_name1|
+| Cart              |
+| Proceed_To_Checkout |
+
+When I enter the data for the following fields on "Checkout" page
+|Col_name1               | Col_name2      |
+| FieldName              | Value          |
+| web_element            | test@test.com  |
+
+And I click the following elements on <Checkout_Page>
+|Col_name1|
+| Next               |
+| Place_Order        |
+
+And I assert the following elements on <Order_Confirmation_Page>
+|Col_name1           | Col_name2      |
+| Thank_You          | Expected_Text  |
+| Order_ID           | Expected_Text  |
+
+And I scroll till element <Print_Button> visible on <Print_Page>
+And I assert alert text with <Hi, Print me> on <Print1_Page>

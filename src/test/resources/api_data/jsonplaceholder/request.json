@@ -1,0 +1,10 @@
+{
+  "host_uri": "https://reqres.in",
+  "base_path": "{{context_path}}",
+  "header": {
+    "Content-Type": "application/json"
+  },
+  "request": {
+    "name": "microservice_test_accelerator"
+  }
+}

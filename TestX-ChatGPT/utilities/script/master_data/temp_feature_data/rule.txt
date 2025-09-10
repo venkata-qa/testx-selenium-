@@ -1,0 +1,35 @@
+Rules for Merging Steps:
+- Number of data table's columns should be equal to the number of arguments in a step (Except page name)
+
+1. If you have multiple click operations on the same page, use the following line to merge them:
+
+When I click the following elements on <Page_Name>
+| Col_name  |
+| Element1  |
+| Element2  |
+Column should be one.
+
+2. If you have multiple enter-related steps on the same page, use the following line to merge them:
+
+When I enter the data for the following fields on "<Page_Name>"
+| Col_name1         | Col_name2       |
+| FieldName1        | Value1          |
+| FieldName2        | Value2          |
+Columns should be two.
+
+3. If you have multiple hover-related steps on the same page, use the following line to merge them:
+
+Given I hover on following element on <Page_Name>
+| Col_name1 |
+| Element1  |
+| Element2  |
+Column should be one.
+
+4. If you have multiple assertion-related steps on the same page, use the following line to merge them:
+
+And I assert the following elements on <Page_Name>
+| Col_name1         | Col_name2      |
+| Element1          | Expected_Text1 |
+| Element2          | Expected_Text2 |
+
+5. If you have distinct steps that should not be merged, keep them separate in the Gherkin scenario.

@@ -1,0 +1,22 @@
+1. Use this step to enter text in web element. When I enter text <actual_text_value> in <web_element_name> field on <random_page_name> page
+2. Use this step to click a web element. When I clicked <Web_element_name> on <random_page_name> page
+3. Create new steps for other operations if not existing in provided information.
+4. Use this type of step to select value from dropdown as per visible test, as per visible value, or as per provided index value.
+Select by visible text <Haryana> option in <State> dropdown on <Checkout_Page>
+Select by index <3> option in <State> dropdown on <Checkout_Page>
+Select by value <HR> option in <State> dropdown on <Checkout_Page>
+
+
+If we have the following types of step.
+And User clicks on "Jackets" on "Home_Page"
+And User clicks on "Any_Searched_Result_Item" on "Home_Page"
+And User clicks on "Buy_Now" on "Search_Page"
+And User clicks on "M_Size" on "Product_Detail_Page"
+And User clicks on "Blue_Color" on "Product_Detail_Page"
+Then Use one step to click on all elements, like below.
+And User clicks on following buttons
+|Jackets1|
+|Jackets2|
+|Jackets3|
+
+Apply this rule for all type of operations, Means create a common step if we have similar subsequent steps.

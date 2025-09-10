@@ -1,0 +1,14 @@
+{   
+    "id":"sessID",
+    "options": {
+        "model": "gpt35turbo",
+        "contexts": [],
+        "parameters": {
+            "temperature": 0,
+            "max_tokens": 4000
+        },
+        "source": "pschat"
+    },
+    "message": "queryfromUser",
+    "async": true
+}

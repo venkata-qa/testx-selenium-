@@ -1,0 +1,34 @@
+Please generate the step definition as per the requirements mentioned in the below points.
+Please read following points before generating the code.
+
+Follow below syntax to generate the step definition.
+Sample Step definitions.
+1. This is a sample step definition to enter text in web element on random page
+@when(u'I enter text {text} in {locator} field on {page} page')
+def enter_text(context, text, locator, page):
+    driver = BasePage(context.browser)
+    element = driver.load_and_find_page_element(locator, page)
+    element.clear()
+    element.send_keys(text)
+
+2. This is a sample step definition to click a web element on random page
+@when(u'I clicked {locator} on {page} page')
+def click_element(context, locator, page):
+    driver = BasePage(context.browser)
+    element = driver.load_and_find_page_element(locator, page)
+    element.click()
+
+3. This is a sample step definition to navigate to url
+@given(u'I navigate to app')
+def navigate_to(context):
+    driver = BasePage(context.browser)
+    driver.get(baseURL)
+
+4. Use below step definition to enter text
+@when(u'I get text {locator} field on {page} page')
+def get_text(context, locator, page):
+    driver = BasePage(context.browser)
+    element = self.load_and_find_page_element(locator, page_class_name)
+    return element.text
+
+Create similar types of step definitions for other BDD steps or Selenium operations not provided or not available in the information, including drag and drop, scroll the page, double-click, checkbox selection, radio button selection, etc.

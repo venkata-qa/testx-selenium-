@@ -1,0 +1,31 @@
+stages:
+  - Copy
+  - Build
+  - BE_DeltaFeedFile
+
+test-copy:
+  stage: Copy
+  tags:
+    - fraltecoe_ecp_windows_runner
+  script:
+    - echo "Running data copy.."
+    - d:/qa_feed/scripts/getFiles.ps1 sit
+
+job1:
+  stage: Build
+  script:
+    - echo 'build start'
+    - mvn clean install
+
+job2:
+  stage: BE_FullfeedFile
+  script:
+    - echo ‘test start’
+    - mvn clean install -Dtest=RunBETestFull
+    - echo ‘test executed’
+  timeout: 7 hours 30 minutes
+  artifacts:
+    when: always
+    paths:
+      - target/cucumber-html-reports/*
+    expire_in: 30 days

@@ -1,0 +1,10 @@
+{
+  "host_uri": "https://reqres.in",
+  "base_path": "{{context_path}}/users/23",
+  "header": {
+    "Content-Type": "application/json"
+  },
+  "request": {
+    "name": "get single user"
+  }
+}

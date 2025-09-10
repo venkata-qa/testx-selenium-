@@ -1,0 +1,11 @@
+langchain
+openai
+unstructured
+chromadb
+tiktoken
+langchain-openai
+pandas
+openpyxl
+pyarrow
+networkx
+langchain-community

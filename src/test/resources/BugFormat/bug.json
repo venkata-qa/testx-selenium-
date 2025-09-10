@@ -1,0 +1,15 @@
+{
+  "fields": {
+    "project": {
+      "key": "XSP"
+    },
+    "summary": "SUMMARY",
+    "description": "DESCRIPTION \n\n\n\n *Actual* : DESCRIPTION is not working. \n\n *Expected* : DESCRIPTION should be work",
+    "issuetype": {
+      "name": "Bug"
+    },
+    "priority": {
+      "name": "High"
+    }
+  }
+}

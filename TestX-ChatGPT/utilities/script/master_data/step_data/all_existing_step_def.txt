@@ -1,0 +1,26 @@
+@Given("I enter {string} in {string} field on {string} page")
+public void enterValue(String valueToEnter, String element, String pageName) {
+    WebElement ele1 = load_and_find_page_element(element, pageName);
+    ele1.clear();
+    ele1.sendKeys(valueToEnter);
+}
+
+@When("I click on {string} on {string} page")
+public void clickElement(String element, String pageName) {
+    WebElement ele1 = load_and_find_page_element(element, pageName);
+    ele1.click();
+}
+
+@Then("I assert the page title text with {string} on {string} page")
+public void assertPageTitle(String expectedValue, String pageName) {
+    String actualTitle = driver.getTitle();
+    Assert.assertEquals(expectedValue, actualTitle);
+}
+
+
+@And("I assert element {string} text with {string} on {string} page")
+public void assertElementText(String element, String expectedValue, String pageName) {
+    WebElement ele1 = load_and_find_page_element(element, pageName);
+    String actualText = ele1.getText();
+    Assert.assertEquals(expectedValue, actualText);
+}

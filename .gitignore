@@ -1,0 +1,8 @@
+*.DS_Store
+build
+.idea
+.allure
+.DS_Store
+*.iml
+apilogs
+target

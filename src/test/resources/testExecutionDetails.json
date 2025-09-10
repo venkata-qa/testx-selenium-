@@ -1,0 +1,22 @@
+{
+  "fields": {
+    "project": {
+      "key": "XSP"
+    },
+    "summary": "TestX Execution | Release",
+    "issuetype": {
+      "id": "10043"
+    },
+    "components" : [
+      {
+        "name":"Interface"
+      },
+      {
+        "name":"Core"
+      }
+    ]
+  },
+  "xrayFields": {
+    "testPlanKey": "XSP-59"
+  }
+}

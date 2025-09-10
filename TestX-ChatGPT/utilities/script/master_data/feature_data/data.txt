@@ -1,0 +1,111 @@
+Append 'on <random page name> page' for each step
+Please generate the feature file as per the requirements mentioned in the below points.
+Please read following points before generating the code.
+
+1. Below is the sample feature file code similar to this I am expecting to generate by chat gpt.
+Feature: test the login feature
+
+  Scenario: Testing all steps
+    Given I navigate to app
+    When I enter text <actual_text_value> in <web_element_name> field on <random_page_name> page
+    When I enter text <actual_text_value> in <web_element_name> field on <random_page_name> page
+    When I clicked <Web_element_name> on <random_page_name> page
+    Then I verify the page as Swag Labs
+
+
+
+1. Always use double quote for all 2 or 3 argument in step inside a feature file like web element, text value to be entered and page name. Like below
+
+Scenario: Verify successful drag and drop functionality
+Given User is on the "DragAndDropPage"
+When I drag the "element" from its initial position on the "DragAndDropPage"
+And I drop the "element" to the target location on the "DragAndDropPage"
+Then I verify the "element" is correctly placed
+
+Feature file example 1
+Feature: Adding items to the shopping cart
+
+  Scenario: User searches and adds a product to the cart
+    Given User is on home page
+    When I enter text "iphone10 value" in "search_web_element" field on "home" page
+    And I click "search_web_element" icon on "home" page
+    And I click "1st_product_web_element" on "home" page
+    And I click "add_cart_button_web_element" on "home" page
+    Then I verify cart count should be one
+
+
+Feature file example 2
+Feature: Adding a user
+
+  Scenario: Admin adds a new user
+    Given Admin is on the "UserManagementPage"
+    When I enter text "newUser" in "username_input" field on "UserManagementPage"
+    And I enter text "password123" in "password_input" field on "UserManagementPage"
+    And I enter text "John Doe" in "fullname_input" field on "UserManagementPage"
+    And I select by visible text "Admin" from the "role_dropdown" on "UserManagementPage"
+    And I click "save_button" on "UserManagementPage"
+    Then I verify the user "newUser" is added successfully
+
+
+  Scenario: S1-Verify the visibility / invisibility of drad option for all users
+    Given I am in ECOI
+    When I enter the data for the following fields from the excel file TestData: LoginPage: TID5
+      | FieldName     | PageName  |
+      | username_ecoi | LoginPage |
+      | password_ecoi | LoginPage |
+    When I click the following elements on the "LoginPage"
+      | fieldName        |
+      | loginButton_ecoi |
+    Then I wait "10" seconds to synchronize the things on app
+    And I verify that the "dradIcon" field should be displayed on "HomePage" page
+
+
+  Scenario: S1-Verify email notification is sent to employee when their gift request has been automatically approved
+    Given I am in ECOI
+    When I enter the data for the following fields from the excel file TestData: LoginPage: TID1
+      | FieldName     | PageName  |
+      | username_ecoi | LoginPage |
+      | password_ecoi | LoginPage |
+    When I click the following elements on the "LoginPage"
+      | fieldName        |
+      | loginButton_ecoi |
+    And I wait "15" seconds to synchronize the things on app
+    And I verify that the following text should exactly matches the page title
+      | Employee |
+    And I click the "gifts_icon" on the "GiftFormPage"
+    And I click the "gift_dropdown" on the "GiftFormPage"
+    And I wait "15" seconds to synchronize the things on app
+    And I click the "declare_given_gift_option" on the "GiftFormPage"
+    And I wait "15" seconds to synchronize the things on app
+    And I click the "declare_given_gift_next_button" using java script executor on the "GiftFormPage"
+    And I wait "15" seconds to synchronize the things on app
+    And I click the "additional_employee_search_button" on the "GiftFormPage"
+    And I click the "firstname_employee" on the "GiftFormPage"
+    And I wait "5" seconds to synchronize the things on app
+    And I enter the value "aanchal" into the "firstname_employee" on the "GiftFormPage"
+    And I wait "5" seconds to synchronize the things on app
+    And I click the "lastname_employee" on the "GiftFormPage"
+    And I wait "5" seconds to synchronize the things on app
+    And I enter the value "chaudhary" into the "lastname_employee" on the "GiftFormPage"
+    And I wait "5" seconds to synchronize the things on app
+    And I click the "employee_name" on the "GiftFormPage"
+    And I wait "5" seconds to synchronize the things on app
+    And I click the "ok_button" on the "GiftFormPage"
+
+
+Use below example for upload related test cases
+Scenario: Uploading a text file
+Given User is on the "FileUploadPage"
+When User "uploads_button_element" a "text_file_path" file on the "FileUpload" Page
+Then User verifies that the text file is uploaded successfully
+
+Scenario: Uploading an image file
+Given User is on the "FileUploadPage"
+When User "uploads_button_element" an "image_file_path" file on the "FileUpload" Page
+Then User verifies that the image file is uploaded successfully
+
+Scenario: Testing large file uploads
+Given User is on the "FileUploadPage"
+When User "uploads_button_element" a "large_file_path" file on the "FileUpload" Page
+Then User verifies that the large file is uploaded successfully
+

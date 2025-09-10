@@ -1,0 +1,21 @@
+We are expecting below type of enhanced feature file with combined steps. Only in case we have similar subsequent steps.
+
+Scenario:S1-As a registered user, user should be able to logged in
+
+    Given I am in App main site
+    And I enter the data for the following fields on the "LoginPage"
+      | fieldName     | data          |
+      | usernameInput | standard_user |
+      | passwordInput | secret_sauce  |
+    When I click the following elements on the "LoginPage"
+      | fieldName   |
+      | loginButton |
+      | HomeButton  |
+      |ProfileButton|
+    And I verify the text of the following fields on the "HomePage"
+      | fieldName     | fieldText  |
+      | productsMain1 | Products1  |
+      | productsMain2 | Products2  |
+      | productsMain3 | Products3  |
+
+Apply this rule for all type of operations, Means create a common step if we have similar subsequent steps.

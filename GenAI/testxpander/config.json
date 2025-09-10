@@ -1,0 +1,9 @@
+{   
+    "CreateQIdUrl": "https://api.psnext.info/api/chat/", 
+    "GetResponseFromQId": "https://api.psnext.info/api/q/",
+    "StepDefFilePath": "stepDefinition",
+    "FeatureFileRequestPath": "request.feature",
+    "FeatureFileResponsePath": "response.feature",
+    "StepDefRequestPath": "StepDefRequest.feature",
+    "StepDefResponseJavaPath": "StepDefinitions"
+}

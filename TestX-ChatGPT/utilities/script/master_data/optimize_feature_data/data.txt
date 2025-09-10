@@ -1,0 +1,16 @@
+1. In a feature file, If we have similar subsequent steps.
+like click, enter hover on elements.
+in such case use below step for your ref and generate as per this type.
+    When I click the following elements on the "LoginPage"
+      | fieldName   |
+      | loginButton |
+      | HomeButton |
+      | ProfileButton |
+2. In a feature file, If we have similar subsequent steps. like enter value in a text field as a step then enter value in b text field as a new next step and so on.
+in this case use below step for your ref and generate as per this type.
+    And I enter the data for the following fields on the "LoginPage"
+      | fieldName     | data          |
+      | usernameInput | standard_user |
+      | passwordInput | secret_sauce  |
+
+3. Apply above two rule and instruction for other similar type of selenium operation. Means create a common step if we have similar subsequent steps for click or enter text etc.

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Test_Suite" verbose="2">
+    <test name="Demo_Test">
+
+    <classes>
+        <class name="com.testx.web.api.selenium.restassured.qe.ui.testrunners.CreateXrayTestCases"/>
+        </classes>
+
+    </test>
+</suite>
