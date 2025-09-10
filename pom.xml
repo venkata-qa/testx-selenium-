@@ -55,6 +55,9 @@
     <org-springframework.spring-beans.version>6.1.20</org-springframework.spring-beans.version>
     <org-springframework.spring-expression.version>6.1.20</org-springframework.spring-expression.version>
     <org-springframework.spring-context.version>6.1.20</org-springframework.spring-context.version>
+    <org-apache-commons.commons-text.version>1.10.0</org-apache-commons.commons-text.version>
+    <com-googlecode-owasp-java-html-sanitizer.owasp-java-html-sanitizer.version>20211018.1</com-googlecode-owasp-java-html-sanitizer.owasp-java-html-sanitizer.version>
+    <org-apache-xmlbeans.xmlbeans.version>3.0.0</org-apache-xmlbeans.xmlbeans.version>
   </properties>
 
   <parent>
@@ -605,6 +608,21 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
         <version>${org-springframework.spring-context.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-text</artifactId>
+        <version>${org-apache-commons.commons-text.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+        <artifactId>owasp-java-html-sanitizer</artifactId>
+        <version>${com-googlecode-owasp-java-html-sanitizer.owasp-java-html-sanitizer.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.xmlbeans</groupId>
+        <artifactId>xmlbeans</artifactId>
+        <version>${org-apache-xmlbeans.xmlbeans.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
