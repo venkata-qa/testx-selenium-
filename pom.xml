@@ -60,6 +60,8 @@
     <org-apache-xmlbeans.xmlbeans.version>3.0.0</org-apache-xmlbeans.xmlbeans.version>
     <com-lowagie.itext.version>5.5.12</com-lowagie.itext.version>
     <commons-beanutils.commons-beanutils.version>1.11.0</commons-beanutils.commons-beanutils.version>
+    <org-apache-xmlgraphics.xmlgraphics-commons.version>2.6</org-apache-xmlgraphics.xmlgraphics-commons.version>
+    <org-springframework-boot.spring-boot.version>3.3.11</org-springframework-boot.spring-boot.version>
   </properties>
 
   <parent>
@@ -157,7 +159,7 @@
     <dependency>
       <groupId>net.snowflake</groupId>
       <artifactId>snowflake-jdbc</artifactId>
-      <version>3.13.28</version>
+      <version>3.23.1</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -635,6 +637,16 @@
         <groupId>commons-beanutils</groupId>
         <artifactId>commons-beanutils</artifactId>
         <version>${commons-beanutils.commons-beanutils.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.xmlgraphics</groupId>
+        <artifactId>xmlgraphics-commons</artifactId>
+        <version>${org-apache-xmlgraphics.xmlgraphics-commons.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot</artifactId>
+        <version>${org-springframework-boot.spring-boot.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
