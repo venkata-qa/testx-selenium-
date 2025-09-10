@@ -26,7 +26,7 @@
     <slf4j.version>2.0.9</slf4j.version>
     <log4j.version>1.2.17</log4j.version>
     <owner.version>1.0.11</owner.version>
-    <poi.version>5.2.3</poi.version>
+    <poi.version>5.3.0</poi.version>
     <allure.version>2.22.1</allure.version>
     <allure.maven.version>2.11.2</allure.maven.version>
     <allure-testng.version>2.19.0</allure-testng.version>
