@@ -28,6 +28,7 @@ public class XMLAndDBAssertions {
             String fileName = column.get("fileName");
             String tableName = column.get("tableName");
 
+            if (!tableName.matches("^[a-zA-Z0-9_]+$")) throw new IllegalArgumentException("Invalid table name");
             Map<List<String>, List<String>> allRecordsListDB = DBCommonUtils.getAllRecordsByQueryAsMap("select * from " + tableName);
             System.out.println(allRecordsListDB);
             Map<List<String>, List<String>> allRecordsFeed = XMLFileOperationUtil.readXMLAsMap();
