@@ -47,7 +47,13 @@ public class DBCommonUtils {
         try {
             statement = conn.createStatement();
             statement.setFetchSize(1000);
-            String query = "select * from " + tableName + " where " + filterKey + "=" + filterValue;
+            if (!tableName.matches("^[a-zA-Z0-9_]+$") || !filterKey.matches("^[a-zA-Z0-9_]+$")) {
+                throw new SQLException("Invalid table or column name");
+            }
+            String query = "select * from " + tableName + " where " + filterKey + "=?";
+            PreparedStatement prepStmt = conn.prepareStatement(query);
+            prepStmt.setString(1, filterValue);
+            resultSet = prepStmt.executeQuery();
             resultSet = statement.executeQuery(query);
             List<String> values = new ArrayList<>();
 
@@ -125,6 +131,9 @@ public class DBCommonUtils {
         try {
             statement = conn.createStatement();
             statement.setFetchSize(1000);
+            if (!tableName.matches("^[a-zA-Z0-9_]+$") || !columnName.matches("^[a-zA-Z0-9_]+$")) {
+                throw new SQLException("Invalid table or column name");
+            }
             String query = "select " + columnName + " from " + tableName;
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
@@ -190,6 +199,9 @@ public class DBCommonUtils {
         try {
             statement = conn.createStatement();
             statement.setFetchSize(1000);
+            if (!tableName.matches("^[a-zA-Z0-9_]+$")) {
+                throw new SQLException("Invalid table name");
+            }
             String query = "select count(*) as count from " + tableName;
             resultSet = statement.executeQuery(query);
             if (resultSet.next())
