@@ -69,6 +69,7 @@
     <org-apache-pdfbox.pdfbox.version>2.0.24</org-apache-pdfbox.pdfbox.version>
     <org-bouncycastle.bcpkix-jdk18on.version>1.79</org-bouncycastle.bcpkix-jdk18on.version>
     <org-springframework-boot.spring-boot-autoconfigure.version>2.5.15</org-springframework-boot.spring-boot-autoconfigure.version>
+    <net-minidev.json-smart.version>2.5.2</net-minidev.json-smart.version>
   </properties>
 
   <parent>
@@ -689,6 +690,11 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-autoconfigure</artifactId>
         <version>${org-springframework-boot.spring-boot-autoconfigure.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>net.minidev</groupId>
+        <artifactId>json-smart</artifactId>
+        <version>${net-minidev.json-smart.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
