@@ -3,7 +3,7 @@ package com.testx.web.api.selenium.restassured.qe.database;
 import com.testx.web.api.selenium.restassured.qe.ui.config.ConfigurationManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;

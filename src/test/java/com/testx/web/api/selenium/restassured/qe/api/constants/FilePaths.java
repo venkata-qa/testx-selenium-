@@ -1,8 +1,6 @@
 
 package com.testx.web.api.selenium.restassured.qe.api.constants;
 
-import org.bouncycastle.pqc.crypto.newhope.NHOtherInfoGenerator;
-
 public class FilePaths {
   public static final String API_PATH_REQUEST_JSON =
           "/api_data/env_type/api_path/request.json";

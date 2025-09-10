@@ -10,6 +10,8 @@ import org.codehaus.plexus.util.DirectoryScanner;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileReader;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class GenerateReport {
+    private static final Logger log = LoggerFactory.getLogger(GenerateReport.class);
     private File reportOutputDirectory = new File("target");
     private String inputDirectoryPath = System.getProperty("user.dir") + "/target/cucumber-report";
     private String fileNamesOrRegexWithCommaSeperated = "*.json";

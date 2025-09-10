@@ -24,7 +24,6 @@
     <selenium.version>4.25.0</selenium.version>
     <logback.version>1.5.13</logback.version>
     <slf4j.version>2.0.9</slf4j.version>
-    <log4j.version>1.2.17</log4j.version>
     <owner.version>1.0.11</owner.version>
     <poi.version>5.3.0</poi.version>
     <allure.version>2.22.1</allure.version>
@@ -58,7 +57,7 @@
     <org-apache-commons.commons-text.version>1.10.0</org-apache-commons.commons-text.version>
     <com-googlecode-owasp-java-html-sanitizer.owasp-java-html-sanitizer.version>20211018.1</com-googlecode-owasp-java-html-sanitizer.owasp-java-html-sanitizer.version>
     <org-apache-xmlbeans.xmlbeans.version>3.0.0</org-apache-xmlbeans.xmlbeans.version>
-    <com-lowagie.itext.version>5.5.12</com-lowagie.itext.version>
+    <com-lowagie.itext.version>4.2.2</com-lowagie.itext.version>
     <commons-beanutils.commons-beanutils.version>1.11.0</commons-beanutils.commons-beanutils.version>
     <org-apache-xmlgraphics.xmlgraphics-commons.version>2.6</org-apache-xmlgraphics.xmlgraphics-commons.version>
     <org-springframework-boot.spring-boot.version>3.3.11</org-springframework-boot.spring-boot.version>
@@ -349,11 +348,6 @@
       <version>${logback.version}</version>
     </dependency>
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>${log4j.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>${slf4j.version}</version>
@@ -622,6 +616,12 @@
         <artifactId>spring-context</artifactId>
         <version>${org-springframework.spring-context.version}</version>
       </dependency>
+      <!-- https://mvnrepository.com/artifact/org.codehaus.plexus/plexus-utils -->
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-utils</artifactId>
+        <version>4.0.2</version>
+      </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-text</artifactId>
@@ -662,6 +662,25 @@
         <artifactId>testng</artifactId>
         <version>${org-testng.testng.version}</version>
       </dependency>
+      <!-- https://mvnrepository.com/artifact/at.bestsolution.efxclipse.eclipse/org.apache.commons.lang -->
+      <dependency>
+        <groupId>at.bestsolution.efxclipse.eclipse</groupId>
+        <artifactId>org.apache.commons.lang</artifactId>
+        <version>2.6.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.14.0</version> <!-- or the latest stable -->
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.ant</groupId>
+        <artifactId>ant</artifactId>
+        <version>1.10.15</version> <!-- or the latest stable -->
+      </dependency>
+
+
       <dependency>
         <groupId>org.apache.ant</groupId>
         <artifactId>ant</artifactId>
