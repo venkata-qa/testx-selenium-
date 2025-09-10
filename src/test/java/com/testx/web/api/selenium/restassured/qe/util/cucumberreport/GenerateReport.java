@@ -6,7 +6,7 @@ import net.masterthought.cucumber.ReportBuilder;
 import net.masterthought.cucumber.Reportable;
 import net.masterthought.cucumber.reducers.ReducingMethod;
 import org.apache.commons.lang3.ArrayUtils;
-import org.codehaus.plexus.util.DirectoryScanner;
+import org.apache.tools.ant.DirectoryScanner;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
