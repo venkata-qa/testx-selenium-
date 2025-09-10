@@ -3319,7 +3319,7 @@ public class ImportFeaturesAndTestResults extends Model {
 
                     } catch (Throwable e) {
                         logger.error("\nerror: Something went wrong attaching file to issue " + pageId + "n");
-                        e.printStackTrace();
+                        logger.error("Exception occurred", e);
                     }
 
                     return true;

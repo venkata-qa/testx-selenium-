@@ -39,7 +39,7 @@ public class DriverManagerUtils {
         try {
             Thread.sleep(secondsLong);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            // Exception caught and ignored
         }
     }
 

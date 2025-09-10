@@ -98,7 +98,7 @@ public class DateUtils {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            // Exception caught and handled
         }
         return false;
     }
