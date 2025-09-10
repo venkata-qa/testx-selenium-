@@ -20,7 +20,7 @@
     <assertj.version>3.13.2</assertj.version>
     <hamcrest.version>2.2</hamcrest.version>
     <aspectj.version>1.9.19</aspectj.version>
-    <webdriver.manager.version>5.5.3</webdriver.manager.version>
+    <webdriver.manager.version>6.1.0</webdriver.manager.version>
     <selenium.version>4.25.0</selenium.version>
     <logback.version>1.4.11</logback.version>
     <slf4j.version>2.0.9</slf4j.version>
@@ -58,6 +58,8 @@
     <org-apache-commons.commons-text.version>1.10.0</org-apache-commons.commons-text.version>
     <com-googlecode-owasp-java-html-sanitizer.owasp-java-html-sanitizer.version>20211018.1</com-googlecode-owasp-java-html-sanitizer.owasp-java-html-sanitizer.version>
     <org-apache-xmlbeans.xmlbeans.version>3.0.0</org-apache-xmlbeans.xmlbeans.version>
+    <com-lowagie.itext.version>5.5.12</com-lowagie.itext.version>
+    <commons-beanutils.commons-beanutils.version>1.11.0</commons-beanutils.commons-beanutils.version>
   </properties>
 
   <parent>
@@ -623,6 +625,16 @@
         <groupId>org.apache.xmlbeans</groupId>
         <artifactId>xmlbeans</artifactId>
         <version>${org-apache-xmlbeans.xmlbeans.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.lowagie</groupId>
+        <artifactId>itext</artifactId>
+        <version>${com-lowagie.itext.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-beanutils</groupId>
+        <artifactId>commons-beanutils</artifactId>
+        <version>${commons-beanutils.commons-beanutils.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
