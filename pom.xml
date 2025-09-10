@@ -49,6 +49,12 @@
     <extentreport.version>5.0.6</extentreport.version>
     <pdfbox.version>3.0.1</pdfbox.version>
     <cucumberreporting.version>5.4.0</cucumberreporting.version>
+    <org-springframework.spring-core.version>6.1.20</org-springframework.spring-core.version>
+    <org-springframework.spring-webmvc.version>6.1.20</org-springframework.spring-webmvc.version>
+    <org-springframework.spring-web.version>6.1.20</org-springframework.spring-web.version>
+    <org-springframework.spring-beans.version>6.1.20</org-springframework.spring-beans.version>
+    <org-springframework.spring-expression.version>6.1.20</org-springframework.spring-expression.version>
+    <org-springframework.spring-context.version>6.1.20</org-springframework.spring-context.version>
   </properties>
 
   <parent>
@@ -568,4 +574,38 @@
     </plugins>
     <finalName>testx-selenuim</finalName>
   </build>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${org-springframework.spring-core.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${org-springframework.spring-webmvc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${org-springframework.spring-web.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+        <version>${org-springframework.spring-beans.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-expression</artifactId>
+        <version>${org-springframework.spring-expression.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${org-springframework.spring-context.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>
