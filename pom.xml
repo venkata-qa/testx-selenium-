@@ -63,6 +63,9 @@
     <org-apache-xmlgraphics.xmlgraphics-commons.version>2.6</org-apache-xmlgraphics.xmlgraphics-commons.version>
     <org-springframework-boot.spring-boot.version>3.3.11</org-springframework-boot.spring-boot.version>
     <org-testng.testng.version>7.5.1</org-testng.testng.version>
+    <org-apache-ant.ant.version>1.10.11</org-apache-ant.ant.version>
+    <org-bouncycastle.bcprov-jdk18on.version>1.78</org-bouncycastle.bcprov-jdk18on.version>
+    <org-apache-commons.commons-compress.version>1.26.0</org-apache-commons.commons-compress.version>
   </properties>
 
   <parent>
@@ -653,6 +656,21 @@
         <groupId>org.testng</groupId>
         <artifactId>testng</artifactId>
         <version>${org-testng.testng.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.ant</groupId>
+        <artifactId>ant</artifactId>
+        <version>${org-apache-ant.ant.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcprov-jdk18on</artifactId>
+        <version>${org-bouncycastle.bcprov-jdk18on.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-compress</artifactId>
+        <version>${org-apache-commons.commons-compress.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
