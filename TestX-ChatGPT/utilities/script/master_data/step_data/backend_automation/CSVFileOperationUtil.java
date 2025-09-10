@@ -69,7 +69,7 @@ public class CSVFileOperationUtil {
         try {
             allData = reader.readAll();
         } catch (IOException | CsvException el) {
-            el.printStackTrace();
+            // Exception caught, but not handled
         }
         assert allData != null;
         return allData.size();
@@ -83,7 +83,7 @@ public class CSVFileOperationUtil {
         try {
             rows = reader.readAll();
         } catch (IOException | CsvException e) {
-            e.printStackTrace();
+            // Exception caught and handled
         }
         assert rows != null;
         for (String[] row : rows) {

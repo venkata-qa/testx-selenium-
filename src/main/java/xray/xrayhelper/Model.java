@@ -348,7 +348,7 @@ public class Model {
         try {
             read = new Scanner(file);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            // Exception handled silently
         }
         while (read.hasNext()) {
             String line = read.nextLine();
