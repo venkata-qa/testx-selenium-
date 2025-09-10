@@ -70,6 +70,7 @@
     <org-bouncycastle.bcpkix-jdk18on.version>1.79</org-bouncycastle.bcpkix-jdk18on.version>
     <org-springframework-boot.spring-boot-autoconfigure.version>2.5.15</org-springframework-boot.spring-boot-autoconfigure.version>
     <net-minidev.json-smart.version>2.5.2</net-minidev.json-smart.version>
+    <org-apache-commons.commons-configuration2.version>2.10.1</org-apache-commons.commons-configuration2.version>
   </properties>
 
   <parent>
@@ -111,7 +112,7 @@
     <dependency>
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
-      <version>1.15.3</version>
+      <version>1.21.1</version>
     </dependency>
  <!--   <dependency>
       <groupId>org.assertj</groupId>
@@ -144,7 +145,7 @@
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-vision</artifactId>
-      <version>3.50.0</version>
+      <version>3.51.0</version>
     </dependency>
 
 
@@ -695,6 +696,11 @@
         <groupId>net.minidev</groupId>
         <artifactId>json-smart</artifactId>
         <version>${net-minidev.json-smart.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-configuration2</artifactId>
+        <version>${org-apache-commons.commons-configuration2.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
