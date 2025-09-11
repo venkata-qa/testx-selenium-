@@ -6,3 +6,11 @@ build
 *.iml
 apilogs
 target
+
+# Security: Prevent secrets from being committed
+.env
+test-secrets.properties
+**/secrets/**
+**/*secret*
+**/*password*
+**/*key*

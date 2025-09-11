@@ -1,4 +1,4 @@
 {
   "id": 4,
-  "token": "" // This is intentionally placed here
+  "token": "${API_TOKEN}" 
 }
