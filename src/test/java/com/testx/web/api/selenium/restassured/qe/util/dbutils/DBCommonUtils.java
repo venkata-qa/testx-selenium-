@@ -21,15 +21,21 @@ public class DBCommonUtils {
 
     //Tested
     public static List<String> getColumnsName(String tableName){
+        // Input validation to prevent SQL injection
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
+        
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         List<String> colList = new ArrayList<>();
         try {
-            statement = conn.createStatement();
+            // Use prepared statement with validated table name (safe for table names)
+            String query = "select * from " + tableName + " WHERE 1=0"; // Get metadata only
+            statement = conn.prepareStatement(query);
             statement.setFetchSize(1000);
-            String query = "select * from " + tableName;
-            resultSet = statement.executeQuery(query);
+            resultSet = statement.executeQuery();
             ResultSetMetaData metaData = resultSet.getMetaData();
             int columnCount = metaData.getColumnCount();
             for (int i = 1; i <= columnCount; i++) {
@@ -49,14 +55,24 @@ public class DBCommonUtils {
 
     //Tested
     public static List<String> getSpecificRecordAsList(String tableName, String filterKey, String filterValue){
+        // Input validation to prevent SQL injection
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
+        if (filterKey == null || !filterKey.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid filter key: " + filterKey);
+        }
+        
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         try {
-            statement = conn.createStatement();
+            // Use prepared statement to prevent SQL injection
+            String query = "select * from " + tableName + " where " + filterKey + " = ?";
+            statement = conn.prepareStatement(query);
             statement.setFetchSize(1000);
-            String query = "select * from " + tableName + " where " + filterKey + "=" + filterValue;
-            resultSet = statement.executeQuery(query);
+            statement.setString(1, filterValue); // Safe parameter binding
+            resultSet = statement.executeQuery();
             List<String> values = new ArrayList<>();
 
             ResultSetMetaData metaData = resultSet.getMetaData();
@@ -86,14 +102,24 @@ public class DBCommonUtils {
 
     //Tested
     public static HashSet<String> getSpecificRecord(String tableName, String filterKey, String filterValue){
+        // Input validation to prevent SQL injection
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
+        if (filterKey == null || !filterKey.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid filter key: " + filterKey);
+        }
+        
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         try {
-            statement = conn.createStatement();
+            // Use prepared statement to prevent SQL injection
+            String query = "select * from " + tableName + " where " + filterKey + " = ?";
+            statement = conn.prepareStatement(query);
             statement.setFetchSize(1000);
-            String query = "select * from " + tableName + " where " + filterKey + "='" + filterValue + "'";
-            resultSet = statement.executeQuery(query);
+            statement.setString(1, filterValue); // Safe parameter binding
+            resultSet = statement.executeQuery();
             List<String> values = new ArrayList<>();
 
             ResultSetMetaData metaData = resultSet.getMetaData();
@@ -123,18 +149,32 @@ public class DBCommonUtils {
 
     //Tested
     public static List<String> getSpecificColumnForAllRecords(String tableName, String columnName){
+        // Input validation to prevent SQL injection
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
+        if (columnName == null || !columnName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid column name: " + columnName);
+        }
+        
         if (tableName.contains("Blank")) {
             tableName = tableName.replace("Blank", "");
+            // Re-validate after replacement
+            if (!tableName.matches("^[a-zA-Z0-9_]+$")) {
+                throw new IllegalArgumentException("Invalid table name after blank removal: " + tableName);
+            }
         }
+        
         List<String> allRecords = new ArrayList<>();
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         try {
-            statement = conn.createStatement();
-            statement.setFetchSize(1000);
+            // Safe to use string concatenation here since inputs are validated
             String query = "select " + columnName + " from " + tableName;
-            resultSet = statement.executeQuery(query);
+            statement = conn.prepareStatement(query);
+            statement.setFetchSize(1000);
+            resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 allRecords.add(resultSet.getString(columnName));
             }
@@ -192,14 +232,20 @@ public class DBCommonUtils {
 
     //Tested
     public static int getTotalRecordCountForTable(String tableName) {
+        // Input validation to prevent SQL injection
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
+        
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         try {
-            statement = conn.createStatement();
-            statement.setFetchSize(1000);
+            // Safe to use string concatenation here since table name is validated
             String query = "select count(*) as count from " + tableName;
-            resultSet = statement.executeQuery(query);
+            statement = conn.prepareStatement(query);
+            statement.setFetchSize(1000);
+            resultSet = statement.executeQuery();
             if (resultSet.next())
                 return Integer.parseInt(resultSet.getString("count"));
         } catch (SQLException sqlException) {
@@ -364,18 +410,28 @@ public class DBCommonUtils {
     }
 
     public static boolean isValueInTable(String tableName, String columnName, String value) {
+        // Input validation to prevent SQL injection
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
+        if (columnName == null || !columnName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid column name: " + columnName);
+        }
+        
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         boolean flag = false;
         int rowCount = 0;
         try {
-            statement = conn.createStatement();
+            // Use prepared statement to prevent SQL injection
+            String query = "SELECT COUNT(*) as count FROM " + tableName + " WHERE " + columnName + " = ?";
+            statement = conn.prepareStatement(query);
             statement.setFetchSize(1000);
-            String query = "Select * from "+tableName+" where "+columnName+" ="+value;
-            resultSet = statement.executeQuery(query);
+            statement.setString(1, value); // Safe parameter binding
+            resultSet = statement.executeQuery();
             if (resultSet.next())
-                rowCount = Integer.parseInt(resultSet.getString("COUNT(*)"));
+                rowCount = resultSet.getInt("count");
             if (rowCount >= 1) {
                 flag = true;
             }
