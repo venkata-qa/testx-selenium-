@@ -79,7 +79,7 @@ public class SnowFlakeDemo {
             // Close the JDBC connection
             conn.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 
@@ -138,7 +138,7 @@ public class SnowFlakeDemo {
             stmt.close();
             conn.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 
@@ -176,7 +176,7 @@ public class SnowFlakeDemo {
             stmt.close();
             conn.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 }

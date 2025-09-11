@@ -20,7 +20,7 @@ public interface ConfigConstants {
     String PROXY = "proxy";
     String AUTH_TYPE = "auth_type";
     String USERNAME = "username";
-    String PASSWORD = "password";
+    String PASSWORD = "";
     String URL_ENCODING_ENABLED = "url_encoding_enabled";
     String RELAXED_HTTPS = "relaxed_https";
 }

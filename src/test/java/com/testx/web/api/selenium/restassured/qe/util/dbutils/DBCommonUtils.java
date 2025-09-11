@@ -28,12 +28,12 @@ public class DBCommonUtils {
                 colList.add(metaData.getColumnName(i));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
         return colList;
@@ -65,12 +65,12 @@ public class DBCommonUtils {
             }
             return sortedRecord;
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
         return null;
@@ -102,12 +102,12 @@ public class DBCommonUtils {
             }
             return sortedRecord;
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
         return null;
@@ -136,7 +136,7 @@ public class DBCommonUtils {
             try {
                 conn.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
         return allRecords;
@@ -171,12 +171,12 @@ public class DBCommonUtils {
             }
             return map;
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
         return null;
@@ -200,7 +200,7 @@ public class DBCommonUtils {
             try {
                 conn.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
         return 0;
@@ -300,7 +300,7 @@ public class DBCommonUtils {
             }
             log.info("Total number of unique records in table is: " + uniqueRecord.size());
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return duplicateRecord;
     }
@@ -336,7 +336,7 @@ public class DBCommonUtils {
             }
             return primaryKeyList;
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return primaryKeyList;
     }
@@ -397,7 +397,7 @@ public class DBCommonUtils {
                 }
             }
             catch (Exception e){
-                e.printStackTrace();
+                // e.printStackTrace();
             }
             return missingValues;
         }

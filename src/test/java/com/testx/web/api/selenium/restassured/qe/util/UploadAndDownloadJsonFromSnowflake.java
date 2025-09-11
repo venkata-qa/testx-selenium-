@@ -52,7 +52,7 @@ public class UploadAndDownloadJsonFromSnowflake {
             // Close the JDBC connection
             conn.close();
         } catch (SQLException | IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 

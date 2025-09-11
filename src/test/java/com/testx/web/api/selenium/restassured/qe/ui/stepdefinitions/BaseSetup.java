@@ -40,19 +40,19 @@ public class BaseSetup {
         try {
             loadClass = Class.forName(UI_PAGE_OBJECTS_PACKAGE + pageClassName);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         PageFactory.initElements(driver, loadClass);
         Field field = null;
         try {
             field = loadClass.getDeclaredField(locatorName);
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         try {
             element = (WebElement) field.get(null);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return element;
     }
@@ -62,19 +62,19 @@ public class BaseSetup {
         try {
             loadClass = Class.forName(UI_PAGE_OBJECTS_PACKAGE + pageClassName);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         PageFactory.initElements(driver, loadClass);
         Field field = null;
         try {
             field = loadClass.getDeclaredField(locatorName);
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         try {
             element = (List<WebElement>) field.get(null);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return element;
     }

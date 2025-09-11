@@ -19,7 +19,7 @@ public class TextFileOperationUtil {
             String[] value = bufferReader.readLine().split(",", -1);
             return value.length;
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return 0;
     }
@@ -35,7 +35,7 @@ public class TextFileOperationUtil {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return null;
     }
@@ -68,7 +68,7 @@ public class TextFileOperationUtil {
                 allRecord.add(value[indexOfColumn]);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         Hooks.scenario.log("Specific column data for "+fileName +" with column index " +indexOfColumn + ": "+allRecord);
         return allRecord;
@@ -88,7 +88,7 @@ public class TextFileOperationUtil {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return count;
     }
@@ -133,7 +133,7 @@ public class TextFileOperationUtil {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return duplicateRecord;
     }

@@ -38,7 +38,7 @@ public class XMLFileOperationUtil {
             }
             return recordData;
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return null;
     }
@@ -92,7 +92,7 @@ public class XMLFileOperationUtil {
             }
             return dataMap;
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return null;
     }
@@ -130,7 +130,7 @@ public class XMLFileOperationUtil {
             }
             return map;
         } catch (JAXBException | IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return null;
     }

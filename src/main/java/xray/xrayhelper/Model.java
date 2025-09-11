@@ -285,7 +285,7 @@ public class Model {
         try {
             Files.deleteIfExists(file.toPath());
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         final Predicate<String> predicate
@@ -303,13 +303,13 @@ public class Model {
                     writer.newLine();
 
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    // e.printStackTrace();
                 }
 
             });
             writer.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 

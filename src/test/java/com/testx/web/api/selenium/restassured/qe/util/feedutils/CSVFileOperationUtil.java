@@ -21,7 +21,7 @@ public class CSVFileOperationUtil {
         try {
             rows = reader.readAll();
         } catch (IOException | CsvException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         // Find the index of the record we want
         assert rows != null;
@@ -39,7 +39,7 @@ public class CSVFileOperationUtil {
         try {
             rows = reader.readAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         int recordIndex = -1;
 
@@ -83,7 +83,7 @@ public class CSVFileOperationUtil {
         try {
             rows = reader.readAll();
         } catch (IOException | CsvException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         assert rows != null;
         for (String[] row : rows) {

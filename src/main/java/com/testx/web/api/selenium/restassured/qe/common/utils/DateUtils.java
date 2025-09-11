@@ -46,7 +46,7 @@ public class DateUtils {
         try {
             returnDate = StringUtils.isNotBlank(date) ? dtFormat.parse(date) : null;
         } catch (ParseException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return returnDate;
     }
@@ -75,7 +75,7 @@ public class DateUtils {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return false;
     }

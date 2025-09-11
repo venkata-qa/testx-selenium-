@@ -59,9 +59,9 @@ public class DataBaseSteps {
                     list.get(0).get("password"));
             LOGGER.info("DataBase connection established successfully...");
         } catch (SQLException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 
@@ -74,9 +74,9 @@ public class DataBaseSteps {
                     ConfigurationManager.getConfiguration().dbPassword());
             LOGGER.info("Database connection established successfully...");
         } catch (SQLException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 

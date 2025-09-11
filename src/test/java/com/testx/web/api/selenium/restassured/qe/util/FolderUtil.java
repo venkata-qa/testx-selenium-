@@ -92,7 +92,7 @@ public class FolderUtil {
                 System.out.println("Error fetching branch name. Exit code: " + exitCode);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return null;
     }
