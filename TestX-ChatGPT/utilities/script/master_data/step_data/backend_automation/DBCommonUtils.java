@@ -342,7 +342,7 @@ public class DBCommonUtils {
                 return resultSet.getString(columnName);
             }
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            log.error("Database query failed: {}", sqlException.getMessage(), sqlException);
         }
         return null;
     }
