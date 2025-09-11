@@ -2,38 +2,42 @@
 package com.testx.web.api.selenium.restassured.qe.util.dbutils;
 
 import com.testx.web.api.selenium.restassured.qe.config.DBConfig;
-import lombok.extern.log4j.Log4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.*;
 
-@Log4j
 public class DBCommonUtils {
+    private static final Logger log = LoggerFactory.getLogger(DBCommonUtils.class);
     //Tested
     public static List<String> getColumnsName(String tableName){
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         List<String> colList = new ArrayList<>();
         try {
-            statement = conn.createStatement();
+            String query = "select * from " + tableName + " where 1=0"; // metadata only
+            statement = conn.prepareStatement(query);
             statement.setFetchSize(1000);
-            String query = "select * from " + tableName;
-            resultSet = statement.executeQuery(query);
+            resultSet = statement.executeQuery();
             ResultSetMetaData metaData = resultSet.getMetaData();
             int columnCount = metaData.getColumnCount();
             for (int i = 1; i <= columnCount; i++) {
                 colList.add(metaData.getColumnName(i));
             }
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("Failed to fetch column names for table {}: {}", tableName, e.getMessage(), e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return colList;
@@ -41,20 +45,21 @@ public class DBCommonUtils {
 
     //Tested
     public static List<String> getSpecificRecordAsList(String tableName, String filterKey, String filterValue){
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
+        if (filterKey == null || !filterKey.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid filter key: " + filterKey);
+        }
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         try {
-            statement = conn.createStatement();
+            String query = "select * from " + tableName + " where " + filterKey + " = ?";
+            statement = conn.prepareStatement(query);
             statement.setFetchSize(1000);
-            if (!tableName.matches("^[a-zA-Z0-9_]+$") || !filterKey.matches("^[a-zA-Z0-9_]+$")) {
-                throw new SQLException("Invalid table or column name");
-            }
-            String query = "select * from " + tableName + " where " + filterKey + "=?";
-            PreparedStatement prepStmt = conn.prepareStatement(query);
-            prepStmt.setString(1, filterValue);
-            resultSet = prepStmt.executeQuery();
-            resultSet = statement.executeQuery(query);
+            statement.setString(1, filterValue);
+            resultSet = statement.executeQuery();
             List<String> values = new ArrayList<>();
 
             ResultSetMetaData metaData = resultSet.getMetaData();
@@ -71,12 +76,12 @@ public class DBCommonUtils {
             }
             return sortedRecord;
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("Failed to fetch specific record as list: {}", e.getMessage(), e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return null;
@@ -84,14 +89,21 @@ public class DBCommonUtils {
 
     //Tested
     public static HashSet<String> getSpecificRecord(String tableName, String filterKey, String filterValue){
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
+        if (filterKey == null || !filterKey.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid filter key: " + filterKey);
+        }
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         try {
-            statement = conn.createStatement();
+            String query = "select * from " + tableName + " where " + filterKey + " = ?";
+            statement = conn.prepareStatement(query);
             statement.setFetchSize(1000);
-            String query = "select * from " + tableName + " where " + filterKey + "='" + filterValue + "'";
-            resultSet = statement.executeQuery(query);
+            statement.setString(1, filterValue);
+            resultSet = statement.executeQuery();
             List<String> values = new ArrayList<>();
 
             ResultSetMetaData metaData = resultSet.getMetaData();
@@ -108,12 +120,12 @@ public class DBCommonUtils {
             }
             return sortedRecord;
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("Failed to fetch specific record: {}", e.getMessage(), e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return null;
@@ -126,26 +138,26 @@ public class DBCommonUtils {
         }
         List<String> allRecords = new ArrayList<>();
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         try {
-            statement = conn.createStatement();
-            statement.setFetchSize(1000);
             if (!tableName.matches("^[a-zA-Z0-9_]+$") || !columnName.matches("^[a-zA-Z0-9_]+$")) {
                 throw new SQLException("Invalid table or column name");
             }
             String query = "select " + columnName + " from " + tableName;
-            resultSet = statement.executeQuery(query);
+            statement = conn.prepareStatement(query);
+            statement.setFetchSize(1000);
+            resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 allRecords.add(resultSet.getString(columnName));
             }
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            log.error("Database query failed: {}", sqlException.getMessage(), sqlException);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return allRecords;
@@ -193,26 +205,26 @@ public class DBCommonUtils {
 
     //Tested
     public static int getTotalRecordCountForTable(String tableName) {
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         try {
-            statement = conn.createStatement();
-            statement.setFetchSize(1000);
-            if (!tableName.matches("^[a-zA-Z0-9_]+$")) {
-                throw new SQLException("Invalid table name");
-            }
             String query = "select count(*) as count from " + tableName;
-            resultSet = statement.executeQuery(query);
+            statement = conn.prepareStatement(query);
+            statement.setFetchSize(1000);
+            resultSet = statement.executeQuery();
             if (resultSet.next())
                 return Integer.parseInt(resultSet.getString("count"));
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            log.error("Database query failed: {}", sqlException.getMessage(), sqlException);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return 0;
@@ -368,18 +380,25 @@ public class DBCommonUtils {
     }
 
     public static boolean isValueInTable(String tableName, String columnName, String value) {
+        if (tableName == null || !tableName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid table name: " + tableName);
+        }
+        if (columnName == null || !columnName.matches("^[a-zA-Z0-9_]+$")) {
+            throw new IllegalArgumentException("Invalid column name: " + columnName);
+        }
         Connection conn = DBConfig.getConnection();
-        Statement statement;
+        PreparedStatement statement;
         ResultSet resultSet;
         boolean flag = false;
         int rowCount = 0;
         try {
-            statement = conn.createStatement();
+            String query = "SELECT COUNT(*) as count FROM " + tableName + " WHERE " + columnName + " = ?";
+            statement = conn.prepareStatement(query);
             statement.setFetchSize(1000);
-            String query = "Select * from "+tableName+" where "+columnName+" ="+value;
-            resultSet = statement.executeQuery(query);
+            statement.setString(1, value);
+            resultSet = statement.executeQuery();
             if (resultSet.next())
-                rowCount = Integer.parseInt(resultSet.getString("COUNT(*)"));
+                rowCount = resultSet.getInt("count");
             if (rowCount >= 1) {
                 flag = true;
             }
