@@ -61,7 +61,7 @@
     <org-apache-ant.ant.version>1.10.11</org-apache-ant.ant.version>
     <org-bouncycastle.bcprov-jdk18on.version>1.78</org-bouncycastle.bcprov-jdk18on.version>
     <org-apache-commons.commons-compress.version>1.26.0</org-apache-commons.commons-compress.version>
-    <org-apache-pdfbox.pdfbox.version>2.0.24</org-apache-pdfbox.pdfbox.version>
+    <org-apache-pdfbox.pdfbox.version>3.0.3</org-apache-pdfbox.pdfbox.version>
     <org-bouncycastle.bcpkix-jdk18on.version>1.79</org-bouncycastle.bcpkix-jdk18on.version>
     <org-springframework-boot.spring-boot-autoconfigure.version>2.5.15</org-springframework-boot.spring-boot-autoconfigure.version>
     <net-minidev.json-smart.version>2.5.2</net-minidev.json-smart.version>
@@ -469,11 +469,12 @@
       <version>2.24.1</version>
     </dependency>
 
-    <!-- Secure iText to fix XXE and command injection vulnerabilities -->
+    <!-- Removed iText due to AGPL license obligations -->
+    <!-- Alternative: Apache PDFBox (Apache 2.0 license) for PDF operations -->
     <dependency>
-      <groupId>com.itextpdf</groupId>
-      <artifactId>itextpdf</artifactId>
-      <version>5.5.13.3</version>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>${org-apache-pdfbox.pdfbox.version}</version>
     </dependency>
   </dependencies>
   <build>
@@ -663,11 +664,11 @@
         <artifactId>xmlbeans</artifactId>
         <version>${org-apache-xmlbeans.xmlbeans.version}</version>
       </dependency>
-      <!-- Updated to secure iTextPDF version to fix XXE and command injection vulnerabilities -->
+      <!-- Removed iText due to AGPL license - using Apache PDFBox (Apache 2.0 license) -->
       <dependency>
-        <groupId>com.itextpdf</groupId>
-        <artifactId>itextpdf</artifactId>
-        <version>5.5.13.3</version>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox</artifactId>
+        <version>${org-apache-pdfbox.pdfbox.version}</version>
       </dependency>
       <dependency>
         <groupId>commons-beanutils</groupId>
