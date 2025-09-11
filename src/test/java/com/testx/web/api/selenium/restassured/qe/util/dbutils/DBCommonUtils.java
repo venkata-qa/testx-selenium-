@@ -139,7 +139,7 @@ public class DBCommonUtils {
                 allRecords.add(resultSet.getString(columnName));
             }
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            log.error("Database query failed: {}", sqlException.getMessage(), sqlException);
         } finally {
             try {
                 conn.close();
@@ -203,7 +203,7 @@ public class DBCommonUtils {
             if (resultSet.next())
                 return Integer.parseInt(resultSet.getString("count"));
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            log.error("Database query failed: {}", sqlException.getMessage(), sqlException);
         } finally {
             try {
                 conn.close();
@@ -326,7 +326,7 @@ public class DBCommonUtils {
                 return resultSet.getString(columnName);
             }
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            log.error("Database query failed: {}", sqlException.getMessage(), sqlException);
         }
         return null;
     }
@@ -358,7 +358,7 @@ public class DBCommonUtils {
             result = statement.executeUpdate(query);
             statement.executeUpdate("COMMIT");
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            log.error("Database update operation failed: {}", sqlException.getMessage(), sqlException);
         }
         return result;
     }
@@ -381,7 +381,7 @@ public class DBCommonUtils {
             }
             return flag;
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error("Database table check failed: {}", exception.getMessage(), exception);
         }
         return false;
     }

@@ -5,12 +5,15 @@ package com.testx.web.api.selenium.restassured.qe.util.feedutils;
 import com.testx.web.api.selenium.restassured.qe.ui.stepdefinitions.Hooks;
 import com.testx.web.api.selenium.restassured.qe.util.ResourceReaderUtil;
 import com.testx.web.api.selenium.restassured.qe.util.dbutils.DBCommonUtils;
-import lombok.extern.log4j.Log4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.*;
-@Log4j
+
 public class TextFileOperationUtil {
+    
+    private static final Logger log = LoggerFactory.getLogger(TextFileOperationUtil.class);
 
     //Tested
     public static int getColumnCount(String fileName) {
@@ -113,7 +116,7 @@ public class TextFileOperationUtil {
                     br.close();
                 } catch (IOException ex) {
                     // Handle potential IOException from close()
-                    ex.printStackTrace(); // Or handle it as needed
+                    log.error("Failed to close BufferedReader: {}", ex.getMessage(), ex);
                 }
             }
         }
@@ -143,8 +146,8 @@ public class TextFileOperationUtil {
         BufferedReader bufferReaderStream = ResourceReaderUtil.getBufferReaderStream(fileName);
         List<String> fileRecord = TextFileOperationUtil.getSpecificRecord(bufferReaderStream, filterValue);
         List<String> databaseRecord = DBCommonUtils.getSpecificRecordAsList(tableName, filterKey, filterValue);
-        log.info(fileRecord);
-        log.info(databaseRecord);
+        log.info("File records: {}", fileRecord);
+        log.info("Database records: {}", databaseRecord);
         boolean flag = false;
         assert fileRecord != null;
         for (String value : fileRecord) {

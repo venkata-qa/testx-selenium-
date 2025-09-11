@@ -362,7 +362,7 @@ public class DBCommonUtils {
             result = statement.executeUpdate(query);
             statement.executeUpdate("COMMIT");
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            log.error("Database operation failed: {}", sqlException.getMessage(), sqlException);
         }
         return result;
     }
@@ -385,7 +385,7 @@ public class DBCommonUtils {
             }
             return flag;
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error("Database query failed: {}", exception.getMessage(), exception);
         }
         return false;
     }

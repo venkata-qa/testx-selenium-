@@ -4,14 +4,16 @@ package com.testx.web.api.selenium.restassured.qe.util.feedutils;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import com.testx.web.api.selenium.restassured.qe.util.ResourceReaderUtil;
-import lombok.extern.log4j.Log4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Log4j
 public class CSVFileOperationUtil {
+    
+    private static final Logger log = LoggerFactory.getLogger(CSVFileOperationUtil.class);
 
     //Tested
     public static List<String> getSpecificColumnAllValues(String fileName, String columnIndex) {
@@ -57,7 +59,7 @@ public class CSVFileOperationUtil {
             record = rows.get(recordIndex);
         }
 
-        log.info(System.currentTimeMillis());
+        log.info("Processing timestamp: {}", System.currentTimeMillis());
         assert record != null;
         return Arrays.stream(record).collect(Collectors.toCollection(HashSet::new));
     }
@@ -69,7 +71,7 @@ public class CSVFileOperationUtil {
         try {
             allData = reader.readAll();
         } catch (IOException | CsvException el) {
-            el.printStackTrace();
+            log.error("CSV file operation failed: {}", el.getMessage(), el);
         }
         assert allData != null;
         return allData.size();

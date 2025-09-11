@@ -1,11 +1,16 @@
 package com.testx.web.api.selenium.restassured.qe.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.sql.*;
 import java.util.Properties;
 
 public class SnowFlakeDemo {
+    
+    private static final Logger log = LoggerFactory.getLogger(SnowFlakeDemo.class);
 
     public static Connection getConnection()
             throws SQLException {
@@ -151,7 +156,7 @@ public class SnowFlakeDemo {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.execute();
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error("Database operation failed: {}", exception.getMessage(), exception);
         }
     }
 
