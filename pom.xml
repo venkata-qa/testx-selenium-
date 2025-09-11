@@ -17,7 +17,7 @@
     <mysql>8.0.33</mysql>
     <hamcrest.version>2.2</hamcrest.version>
     <aspectj.version>1.9.19</aspectj.version>
-    <webdriver.manager.version>6.1.0</webdriver.manager.version>
+    <webdriver.manager.version>5.6.4</webdriver.manager.version>
     <selenium.version>4.25.0</selenium.version>
     <logback.version>1.5.13</logback.version>
     <slf4j.version>2.0.9</slf4j.version>
@@ -341,6 +341,14 @@
           <groupId>org.apache.groovy</groupId>
           <artifactId>groovy-xml</artifactId>
         </exclusion>
+        <exclusion>
+          <groupId>org.apache.httpcomponents</groupId>
+          <artifactId>httpclient</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.httpcomponents</groupId>
+          <artifactId>httpcore</artifactId>
+        </exclusion>
       </exclusions>
     </dependency>
     <dependency>
@@ -409,10 +417,16 @@
 <!--      <version>${apache.httpclinet.version}</version>-->
 <!--    </dependency>-->
 
+    <!-- HttpClient4 for WebDriverManager 5.x compatibility -->
     <dependency>
-      <groupId>org.apache.httpcomponents.client5</groupId>
-      <artifactId>httpclient5</artifactId>
-      <version>5.2.1</version>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.14</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
+      <version>4.4.16</version>
     </dependency>
 
     <!-- JAXB dependencies for Java 11+ -->
@@ -499,11 +513,11 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
           </dependency>
-<!--          <dependency>-->
-<!--            <groupId>org.apache.maven.surefire</groupId>-->
-<!--            <artifactId>surefire-junit47</artifactId>-->
-<!--            <version>${surefire.version}</version>-->
-<!--          </dependency>-->
+          <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-testng</artifactId>
+            <version>${surefire.version}</version>
+          </dependency>
         </dependencies>
       </plugin>
       <plugin>
