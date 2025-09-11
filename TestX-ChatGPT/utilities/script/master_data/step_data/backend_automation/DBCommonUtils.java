@@ -18,18 +18,14 @@ public class DBCommonUtils {
             throw new IllegalArgumentException("Invalid table name: " + tableName);
         }
         Connection conn = DBConfig.getConnection();
-        PreparedStatement statement;
-        ResultSet resultSet;
+        DatabaseMetaData databaseMetaData;
         List<String> colList = new ArrayList<>();
         try {
-            String query = "select * from " + tableName + " where 1=0"; // metadata only
-            statement = conn.prepareStatement(query);
-            statement.setFetchSize(1000);
-            resultSet = statement.executeQuery();
-            ResultSetMetaData metaData = resultSet.getMetaData();
-            int columnCount = metaData.getColumnCount();
-            for (int i = 1; i <= columnCount; i++) {
-                colList.add(metaData.getColumnName(i));
+            // Use DatabaseMetaData instead of query concatenation for better security
+            databaseMetaData = conn.getMetaData();
+            ResultSet columns = databaseMetaData.getColumns(null, null, tableName, null);
+            while (columns.next()) {
+                colList.add(columns.getString("COLUMN_NAME"));
             }
         } catch (Exception e) {
             log.error("Failed to fetch column names for table {}: {}", tableName, e.getMessage(), e);
@@ -144,6 +140,7 @@ public class DBCommonUtils {
             if (!tableName.matches("^[a-zA-Z0-9_]+$") || !columnName.matches("^[a-zA-Z0-9_]+$")) {
                 throw new SQLException("Invalid table or column name");
             }
+            // Safe to use string concatenation here since inputs are validated
             String query = "select " + columnName + " from " + tableName;
             statement = conn.prepareStatement(query);
             statement.setFetchSize(1000);
@@ -212,6 +209,7 @@ public class DBCommonUtils {
         PreparedStatement statement;
         ResultSet resultSet;
         try {
+            // Safe to use string concatenation here since table name is validated
             String query = "select count(*) as count from " + tableName;
             statement = conn.prepareStatement(query);
             statement.setFetchSize(1000);
