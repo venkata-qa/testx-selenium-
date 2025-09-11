@@ -4,6 +4,11 @@ COPY src /home/src
 COPY pom.xml /home
 ENTRYPOINT mvn clean install -Dtest=RunUITest
 
+# Switch to a non-root user for improved container security
+# Use a numeric UID to avoid dependence on useradd/adduser availability in the base image
+RUN chown -R 1001:0 /home
+USER 1001
+
 
 
 #FROM openjdk:11-jdk-slim
