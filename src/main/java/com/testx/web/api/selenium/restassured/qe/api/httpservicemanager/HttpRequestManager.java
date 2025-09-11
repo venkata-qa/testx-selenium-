@@ -48,8 +48,10 @@ public class HttpRequestManager {
 
         boolean relaxedHttps = configManager.getBoolean(ConfigConstants.RELAXED_HTTPS);
         if (relaxedHttps) {
+            // WARNING: Only use relaxed HTTPS validation in development/testing environments
             specification.relaxedHTTPSValidation();
-            HttpsCertTrust.trustAllHttpsCertificates();
+            // Removed insecure trustAllHttpsCertificates() call for security
+            // RestAssured's relaxedHTTPSValidation() provides safer certificate handling
         }
     }
 
