@@ -57,7 +57,7 @@
     <org-apache-commons.commons-text.version>1.10.0</org-apache-commons.commons-text.version>
     <com-googlecode-owasp-java-html-sanitizer.owasp-java-html-sanitizer.version>20211018.1</com-googlecode-owasp-java-html-sanitizer.owasp-java-html-sanitizer.version>
     <org-apache-xmlbeans.xmlbeans.version>3.0.0</org-apache-xmlbeans.xmlbeans.version>
-    <com-lowagie.itext.version>4.2.2</com-lowagie.itext.version>
+    <com-lowagie.itext.version>5.5.12</com-lowagie.itext.version>
     <commons-beanutils.commons-beanutils.version>1.11.0</commons-beanutils.commons-beanutils.version>
     <org-apache-xmlgraphics.xmlgraphics-commons.version>2.6</org-apache-xmlgraphics.xmlgraphics-commons.version>
     <org-springframework-boot.spring-boot.version>3.3.11</org-springframework-boot.spring-boot.version>
