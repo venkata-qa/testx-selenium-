@@ -2,8 +2,8 @@
 package com.testx.web.api.selenium.restassured.qe.util.feedutils;
 import lombok.ToString;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "book")
 @ToString

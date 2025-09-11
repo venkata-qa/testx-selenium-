@@ -51,8 +51,8 @@ public class RunUITest extends AbstractTestNGCucumberTests {
     @AfterSuite(alwaysRun = true)
     public static void afterAllTests() {
         if(Boolean.parseBoolean(getConfiguration().isXrayEnable())) {
-            ImportResultOnXray importer = new ImportResultOnXray();
-            importer.importXrayResult();
+//            ImportResultOnXray importer = new ImportResultOnXray();
+//            importer.importXrayResult();
         }
         else{
             System.out.println("TestX_Xray - xray import found as "+getConfiguration().isXrayEnable());

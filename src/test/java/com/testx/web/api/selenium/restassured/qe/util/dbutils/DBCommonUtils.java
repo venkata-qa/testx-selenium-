@@ -2,15 +2,23 @@
 package com.testx.web.api.selenium.restassured.qe.util.dbutils;
 
 import com.testx.web.api.selenium.restassured.qe.config.DBConfig;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
+
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.*;
 
-@Log4j
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+@Slf4j
 public class DBCommonUtils {
+
+    private static final Logger log = LoggerFactory.getLogger(DBCommonUtils.class);
+
     //Tested
     public static List<String> getColumnsName(String tableName){
         Connection conn = DBConfig.getConnection();
