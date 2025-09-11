@@ -27,8 +27,17 @@ public class HttpsCertTrust {
      */
     public static SSLContext createSecureSSLContext() {
         try {
-            // Use TLS instead of deprecated SSL
-            SSLContext sslContext = SSLContext.getInstance("TLS");
+            // Use only secure TLS version (1.3 preferred, 1.2 as fallback)
+            SSLContext sslContext;
+            try {
+                // Try TLS 1.3 first (most secure)
+                sslContext = SSLContext.getInstance("TLSv1.3");
+                log.info("Using TLS 1.3 for maximum security");
+            } catch (NoSuchAlgorithmException e) {
+                // Fallback to TLS 1.2 if 1.3 not available
+                sslContext = SSLContext.getInstance("TLSv1.2");
+                log.info("Using TLS 1.2 (TLS 1.3 not available)");
+            }
             
             // Use default trust manager factory for proper certificate validation
             TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(
@@ -38,7 +47,7 @@ public class HttpsCertTrust {
             // Initialize with proper trust managers (enables certificate validation)
             sslContext.init(null, trustManagerFactory.getTrustManagers(), null);
             
-            log.info("Secure SSL context created with proper certificate validation");
+            log.info("Secure SSL context created with proper certificate validation and secure TLS version");
             return sslContext;
             
         } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
