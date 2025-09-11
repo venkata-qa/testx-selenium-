@@ -68,7 +68,6 @@
 //      try {
 //        byteData = Files.readAllBytes(log.toPath());
 //      } catch (IOException e) {
-//        // e.printStackTrace();
 //      }
 //      scenario.attach(byteData, "text/plain","");
 //    }

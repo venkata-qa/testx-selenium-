@@ -27,7 +27,6 @@ public class ResourceReaderUtil {
         try {
             reader = new CSVReader(new FileReader(files[0]));
         } catch (FileNotFoundException e) {
-            // e.printStackTrace();
         }
         return reader;
     }
@@ -78,7 +77,6 @@ public class ResourceReaderUtil {
             assert files != null;
             bufferedReader = new BufferedReader(new FileReader(files[0]));
         } catch (FileNotFoundException e) {
-            // e.printStackTrace();
         }
         return bufferedReader;
     }

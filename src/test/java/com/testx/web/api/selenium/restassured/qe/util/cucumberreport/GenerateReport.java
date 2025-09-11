@@ -126,7 +126,6 @@ public class GenerateReport {
                         writer.write(doc.outerHtml());
                     }
                 } catch (IOException e) {
-                    // e.printStackTrace();
                 }
             }
         }

@@ -23,7 +23,7 @@ public class CSVFileOperationUtil {
         try {
             rows = reader.readAll();
         } catch (IOException | CsvException e) {
-            // e.printStackTrace();
+            log.error("Failed to read CSV file: {}", e.getMessage(), e);
         }
         // Find the index of the record we want
         assert rows != null;
@@ -41,7 +41,7 @@ public class CSVFileOperationUtil {
         try {
             rows = reader.readAll();
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("CSV operation failed: {}", e.getMessage(), e);
         }
         int recordIndex = -1;
 
@@ -85,7 +85,7 @@ public class CSVFileOperationUtil {
         try {
             rows = reader.readAll();
         } catch (IOException | CsvException e) {
-            // e.printStackTrace();
+            log.error("Failed to read CSV file: {}", e.getMessage(), e);
         }
         assert rows != null;
         for (String[] row : rows) {

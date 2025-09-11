@@ -22,7 +22,7 @@ public class TextFileOperationUtil {
             String[] value = bufferReader.readLine().split(",", -1);
             return value.length;
         } catch (IOException e) {
-            // e.printStackTrace();
+            log.error("File operation failed: {}", e.getMessage(), e);
         }
         return 0;
     }
@@ -38,7 +38,7 @@ public class TextFileOperationUtil {
                 }
             }
         } catch (IOException e) {
-            // e.printStackTrace();
+            log.error("File operation failed: {}", e.getMessage(), e);
         }
         return null;
     }
@@ -71,7 +71,7 @@ public class TextFileOperationUtil {
                 allRecord.add(value[indexOfColumn]);
             }
         } catch (IOException e) {
-            // e.printStackTrace();
+            log.error("File operation failed: {}", e.getMessage(), e);
         }
         Hooks.scenario.log("Specific column data for "+fileName +" with column index " +indexOfColumn + ": "+allRecord);
         return allRecord;
@@ -91,7 +91,7 @@ public class TextFileOperationUtil {
                 }
             }
         } catch (IOException e) {
-            // e.printStackTrace();
+            log.error("File operation failed: {}", e.getMessage(), e);
         }
         return count;
     }
@@ -136,7 +136,7 @@ public class TextFileOperationUtil {
                 }
             }
         } catch (IOException e) {
-            // e.printStackTrace();
+            log.error("File operation failed: {}", e.getMessage(), e);
         }
         return duplicateRecord;
     }

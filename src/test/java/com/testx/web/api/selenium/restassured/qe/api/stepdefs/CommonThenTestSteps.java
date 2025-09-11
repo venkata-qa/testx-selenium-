@@ -84,7 +84,6 @@ public class CommonThenTestSteps {
     try {
       httpServiceAssertion.validateTheJSONResponse(expectedJSONResponseFilePath, "LENIENT");
     } catch (JSONException | InvalidFileFormatException | ContentNotFoundException | IOException e) {
-      // e.printStackTrace();
     }
   }
 
@@ -94,7 +93,6 @@ public class CommonThenTestSteps {
     try {
       httpServiceAssertion.validateTheJSONResponse(expectedJSONResponseFilePath, comparisonModeType);
     } catch (JSONException | InvalidFileFormatException | ContentNotFoundException | IOException e) {
-      // e.printStackTrace();
     }  }
 
   @And("I clear the request body")

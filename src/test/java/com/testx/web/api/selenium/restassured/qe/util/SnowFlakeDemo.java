@@ -84,7 +84,7 @@ public class SnowFlakeDemo {
             // Close the JDBC connection
             conn.close();
         } catch (SQLException e) {
-            // e.printStackTrace();
+            log.error("Database operation failed: {}", e.getMessage(), e);
         }
     }
 
@@ -143,7 +143,7 @@ public class SnowFlakeDemo {
             stmt.close();
             conn.close();
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("Database operation failed: {}", e.getMessage(), e);
         }
     }
 
@@ -181,7 +181,7 @@ public class SnowFlakeDemo {
             stmt.close();
             conn.close();
         } catch (SQLException e) {
-            // e.printStackTrace();
+            log.error("Database operation failed: {}", e.getMessage(), e);
         }
     }
 }

@@ -22,7 +22,6 @@ public class HttpsCertTrust implements TrustManager, javax.net.ssl.X509TrustMana
             sc.init(null, trustAllCerts, null);
             javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
         } catch (KeyManagementException | NoSuchAlgorithmException | IllegalArgumentException e) {
-            // e.printStackTrace();
         }
     }
 

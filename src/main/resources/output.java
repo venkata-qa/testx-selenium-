@@ -18,8 +18,7 @@ public static List<String> getSpecificColumnForDownstreamxml(String fileName,Str
         }
         return recordData;
         }catch(Exception e){
-//        // e.printStackTrace();
-        }
+//        }
         return null;
         t
 public static List<String> getSpecificColumnForDownstreamxml(String fileName,String columnName){
@@ -38,7 +37,6 @@ public static List<String> getSpecificColumnForDownstreamxml(String fileName,Str
         }
         return recordData;
         }catch(Exception e){
-        // e.printStackTrace();
         }
         return null;
         }
@@ -105,7 +103,6 @@ public static Map<List<String>,List<String>>getAllRecordsByQueryAsMap(String que
         }
         return map;
         }catch(Exception e){
-        // e.printStackTrace();
         }finally{
         DBConfig.closeConnection(conn,statement,resultSet);
         }
@@ -132,7 +129,6 @@ public static Map<List<string>,List<string>>getRecordFromFileAsMap(String fileNa
         }
         }
         }catch(IOException e){
-        // e.printStackTrace();
         }
         return allRecord;
         t
@@ -174,7 +170,6 @@ public static List<string> getSpecificColData(String fileName,String feedSource,
         allRecord.add(value[indexOfColumn]);
         }
         }catch(IOException e){
-        // e.printStackTrace();
         }
         return allRecord;
         +
@@ -196,7 +191,6 @@ public static BufferedReader getBufferReaderStream(String fileName,String feedSo
         try{
         bufferedReader=new BufferedReader(new FileReader(files[0]));
         }catch(FileNotFoundException e){
-        // e.printStackTrace();
         }
         return bufferedReader;
         1

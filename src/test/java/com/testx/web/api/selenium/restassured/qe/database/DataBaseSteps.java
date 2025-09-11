@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 public class DataBaseSteps {
+    
+    private static final Logger log = LoggerFactory.getLogger(DataBaseSteps.class);
 
     public static String predicted_Options;
     public static String dbValue;
@@ -59,9 +61,9 @@ public class DataBaseSteps {
                     list.get(0).get("password"));
             LOGGER.info("DataBase connection established successfully...");
         } catch (SQLException e) {
-            // e.printStackTrace();
+            log.error("Database connection failed: {}", e.getMessage(), e);
         } catch (ClassNotFoundException e) {
-            // e.printStackTrace();
+            log.error("Database driver not found: {}", e.getMessage(), e);
         }
     }
 
@@ -74,9 +76,9 @@ public class DataBaseSteps {
                     ConfigurationManager.getConfiguration().dbPassword());
             LOGGER.info("Database connection established successfully...");
         } catch (SQLException e) {
-            // e.printStackTrace();
+            log.error("Database connection failed: {}", e.getMessage(), e);
         } catch (ClassNotFoundException e) {
-            // e.printStackTrace();
+            log.error("Database driver not found: {}", e.getMessage(), e);
         }
     }
 

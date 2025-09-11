@@ -469,11 +469,11 @@
       <version>2.24.1</version>
     </dependency>
 
-    <!-- Secure iText to fix XXE vulnerability -->
+    <!-- Secure iText to fix XXE and command injection vulnerabilities -->
     <dependency>
       <groupId>com.itextpdf</groupId>
       <artifactId>itextpdf</artifactId>
-      <version>5.5.13</version>
+      <version>5.5.13.3</version>
     </dependency>
   </dependencies>
   <build>
@@ -663,11 +663,11 @@
         <artifactId>xmlbeans</artifactId>
         <version>${org-apache-xmlbeans.xmlbeans.version}</version>
       </dependency>
-      <!-- Updated to secure iTextPDF version to fix XXE vulnerability -->
+      <!-- Updated to secure iTextPDF version to fix XXE and command injection vulnerabilities -->
       <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>itextpdf</artifactId>
-        <version>5.5.13</version>
+        <version>5.5.13.3</version>
       </dependency>
       <dependency>
         <groupId>commons-beanutils</groupId>

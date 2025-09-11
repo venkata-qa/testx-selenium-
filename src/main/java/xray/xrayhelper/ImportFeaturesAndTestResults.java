@@ -195,7 +195,6 @@ public class ImportFeaturesAndTestResults extends Model {
             file.close();
 
         } catch (IOException e) {
-            // e.printStackTrace();
         }
 
         //        List<String> scenarios = new ArrayList<>();
@@ -213,7 +212,6 @@ public class ImportFeaturesAndTestResults extends Model {
         } catch (Exception e) {
             logger.error("\nerror: Tried to add issue tags to scenarios, something went wrong\n");
 
-            // e.printStackTrace();
         }
 
         logger.info("Processed feature file : " + path2FeatureFile + " Output in " + xrayOutputFile);
@@ -317,7 +315,6 @@ public class ImportFeaturesAndTestResults extends Model {
         try (FileWriter file = new FileWriter(executionDetailsPath)) {
             file.write(documentContext.jsonString());
         } catch (IOException e) {
-            // e.printStackTrace();
         }
 
         xrayExecutionDetailsFile = executionDetailsPath;
@@ -362,7 +359,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
                 } catch (Throwable e) {
                     logger.error("\nerror: Something went wrong importing cucumber results\n");
-                    // e.printStackTrace();
                 }
 
                 if (removeEmbeds) {
@@ -451,7 +447,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
                 } catch (Throwable e) {
                     logger.error("\nerror: Something went wrong importing cucumber results\n");
-                    // e.printStackTrace();
                 }
 
                 if (removeEmbeds) {
@@ -567,7 +562,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
                 } catch (Throwable e) {
                     logger.error("\nerror: Something went wrong importing cucumber results\n");
-                    // e.printStackTrace();
                 }
 
                 if (removeEmbeds) {
@@ -696,7 +690,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
                     } catch (IOException e) {
                         logger.error("ERROR : " + e.getMessage());
-                        // e.printStackTrace();
                     } finally {
 
                         if (outputStream != null) {
@@ -704,7 +697,6 @@ public class ImportFeaturesAndTestResults extends Model {
                                 outputStream.flush();
                                 outputStream.close();
                             } catch (IOException e) {
-                                // e.printStackTrace();
                             }
 
                         }
@@ -778,7 +770,6 @@ public class ImportFeaturesAndTestResults extends Model {
                     }
                 } catch (Exception e) {
                     // TODO: handle exception
-                    // e.printStackTrace();
                 }
                 i++;
             }
@@ -903,7 +894,6 @@ public class ImportFeaturesAndTestResults extends Model {
             logger.info("exit: " + response.getStatusCode());
         } catch (Throwable e) {
             logger.error("\nerror: Something went wrong updating issue " + issueKey + "\n");
-            // e.printStackTrace();
         }
     }
 
@@ -961,7 +951,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
         } catch (Throwable e) {
             logger.error("\nerror: Something went wrong linking issue " + issueId + " to outward issue id " + outwardIssue + " using link type " + linkName + "\n");
-            // e.printStackTrace();
         }
     }
 
@@ -1119,7 +1108,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
         } catch (Throwable e) {
             logger.error("\nerror: Something went wrong transitioning issue " + issueKey + " using transitionId " + transitionId + "n");
-            // e.printStackTrace();
         }
     }
 
@@ -1159,7 +1147,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
         } catch (Throwable e) {
             logger.error("\nerror: Something went wrong attaching file to issue " + issueKey + "n");
-            // e.printStackTrace();
         }
     }
 
@@ -1644,7 +1631,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
             } catch (Throwable e) {
                 logger.error("\nerror: Something went wrong creating defect\n");
-                // e.printStackTrace();
             }
 
             if (attachment.size()>0) {
@@ -1673,7 +1659,6 @@ public class ImportFeaturesAndTestResults extends Model {
                         opStream.write(entry.getKey());
                         opStream.flush();
                     } catch (IOException e) {
-                        // e.printStackTrace();
                     } finally{
                         try{
                             if(opStream != null) opStream.close();
@@ -1803,7 +1788,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
             } catch (Throwable e) {
                 logger.error("\nerror: Something went wrong creating defect\n");
-                // e.printStackTrace();
             }
 
             if (linkIssue != "") {
@@ -1873,7 +1857,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
             } catch (Throwable e) {
                 logger.error("\nerror: Something went wrong creating defect\n");
-                // e.printStackTrace();
             }
 
             if (linkIssue != "") {
@@ -1912,7 +1895,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
         } catch (Throwable e) {
             logger.error("\nerror: Something went wrong\n");
-            // e.printStackTrace();
         }
 
         return issuesInSearch.get(0).toString();
@@ -1948,7 +1930,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
         } catch (Throwable e) {
             logger.error("\nerror: Something went wrong\n");
-            // e.printStackTrace();
         }
 
         return searchResults;
@@ -2032,7 +2013,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
         } catch (Throwable e) {
             logger.error("\nerror: Something went wrong\n");
-            // e.printStackTrace();
         }
 
         if (folderPath.startsWith("/")) {
@@ -2133,7 +2113,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
                     } catch (Throwable e) {
                         logger.error("\nerror: Something went wrong\n");
-                        // e.printStackTrace();
                     }
                 }
                 else {
@@ -2218,7 +2197,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
             } catch (Throwable e) {
                 logger.error("\nerror: Something went wrong\n");
-                // e.printStackTrace();
             }
         }
 
@@ -2301,7 +2279,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
             } catch (Throwable e) {
                 logger.error("\nerror: Something went wrong\n");
-                // e.printStackTrace();
             }
         }
         else {
@@ -2435,7 +2412,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
             } catch (Throwable e) {
                 logger.error("\nerror: Something went wrong\n");
-                // e.printStackTrace();
             }
         }
         else {
@@ -2512,7 +2488,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
             } catch (Throwable e) {
                 logger.error("\nerror: Something went wrong\n");
-                // e.printStackTrace();
             }
         }
         else {
@@ -2598,7 +2573,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
         } catch (Throwable e) {
             logger.error("\nerror: Something went wrong creating test plan\n");
-            // e.printStackTrace();
         }
 
         return issueKey;
@@ -2672,7 +2646,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
         } catch (Throwable e) {
             logger.error("\nerror: Something went wrong creating test set\n");
-            // e.printStackTrace();
         }
 
         return issueKey;
@@ -2884,7 +2857,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
                 } catch (Throwable e) {
                     logger.error("\nerror: Something went wrong creating defect\n");
-                    // e.printStackTrace();
                 }
 
                 postCommentToIssue(token, "New issue identified during ZAP scan for " + component + " in "+branchName+" build : " + buildUrl, defectId);
@@ -3010,8 +2982,7 @@ public class ImportFeaturesAndTestResults extends Model {
 //
 //                } catch (Throwable e) {
 //                    logger.error("\nerror: Something went wrong creating defect\n");
-//                    // e.printStackTrace();
-//                }
+//        //                }
 
                 //postCommentToIssue(token, "New issue identified during NexusIQ scan for " + component + " in "+branchName+" build : " + buildUrl, defectId);
 
@@ -3264,7 +3235,6 @@ public class ImportFeaturesAndTestResults extends Model {
 
                     } catch (Throwable e) {
                         logger.error("\nerror: Something went wrong attaching file to issue " + pageId + "n");
-                        // e.printStackTrace();
                     }
 
                     return true;

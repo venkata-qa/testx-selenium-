@@ -36,12 +36,12 @@ public class DBCommonUtils {
                 colList.add(metaData.getColumnName(i));
             }
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("Failed to get column names for table: {}", e.getMessage(), e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return colList;
@@ -73,12 +73,12 @@ public class DBCommonUtils {
             }
             return sortedRecord;
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("Database operation failed: {}", e.getMessage(), e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return null;
@@ -110,12 +110,12 @@ public class DBCommonUtils {
             }
             return sortedRecord;
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("Database operation failed: {}", e.getMessage(), e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return null;
@@ -144,7 +144,7 @@ public class DBCommonUtils {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return allRecords;
@@ -179,12 +179,12 @@ public class DBCommonUtils {
             }
             return map;
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("Database operation failed: {}", e.getMessage(), e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return null;
@@ -208,7 +208,7 @@ public class DBCommonUtils {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // e.printStackTrace();
+                log.warn("Failed to close database connection: {}", e.getMessage());
             }
         }
         return 0;
@@ -308,7 +308,7 @@ public class DBCommonUtils {
             }
             log.info("Total number of unique records in table is: " + uniqueRecord.size());
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("Database operation failed: {}", e.getMessage(), e);
         }
         return duplicateRecord;
     }
@@ -344,7 +344,7 @@ public class DBCommonUtils {
             }
             return primaryKeyList;
         } catch (Exception e) {
-            // e.printStackTrace();
+            log.error("Database operation failed: {}", e.getMessage(), e);
         }
         return primaryKeyList;
     }
@@ -405,7 +405,7 @@ public class DBCommonUtils {
                 }
             }
             catch (Exception e){
-                // e.printStackTrace();
+                log.error("Database operation failed: {}", e.getMessage(), e);
             }
             return missingValues;
         }
