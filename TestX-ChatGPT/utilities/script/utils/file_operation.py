@@ -2,9 +2,24 @@ import os
 import json
 
 
+def _ensure_safe_path(base_dir: str, path: str) -> str:
+    base = os.path.abspath(base_dir)
+    abs_path = os.path.abspath(path)
+    if os.path.commonpath([base, abs_path]) != base:
+        raise ValueError(f"Unsafe file path detected: {path}")
+    return abs_path
+
+
+def _safe_open(base_dir: str, path: str, mode: str):
+    abs_path = _ensure_safe_path(base_dir, path)
+    if any(m in mode for m in ("w", "a", "+")):
+        os.makedirs(os.path.dirname(abs_path), exist_ok=True)
+    return open(abs_path, mode, encoding="utf-8")
+
+
 def get_api_token(json_file_path):
     # Read the JSON file
-    with open(json_file_path, 'r') as file:
+    with _safe_open(os.getcwd(), json_file_path, 'r') as file:
         data = json.load(file)
 
     # Specify the key you want to retrieve
@@ -54,7 +69,7 @@ def get_latest_folder_and_file(path):
 
 
 def read_file(file_path):
-    with open(file_path, 'r') as file:
+    with _safe_open(os.getcwd(), file_path, 'r') as file:
         data = file.read()
     return data
 
