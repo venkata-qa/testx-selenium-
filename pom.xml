@@ -13,11 +13,11 @@
     <cucumber.version>6.11.0</cucumber.version>
     <testng.version>7.9.0</testng.version>
     <junit4.version>4.13.2</junit4.version>
-    <assertj.version>3.24.2</assertj.version>
+    <assertj.version>3.27.4</assertj.version>
     <mysql>8.0.33</mysql>
     <testng.version>7.3.0</testng.version>
     <jnuit4.version>4.13.1</jnuit4.version>
-    <assertj.version>3.13.2</assertj.version>
+    <assertj.version>3.27.4</assertj.version>
     <hamcrest.version>2.2</hamcrest.version>
     <aspectj.version>1.9.19</aspectj.version>
     <webdriver.manager.version>6.1.0</webdriver.manager.version>
