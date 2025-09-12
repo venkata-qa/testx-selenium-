@@ -144,7 +144,7 @@
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-vision</artifactId>
-      <version>3.53.0</version>
+      <version>3.70.0</version>
     </dependency>
 
 
